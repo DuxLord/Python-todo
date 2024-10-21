@@ -1,0 +1,46 @@
+1. Concepto del Cifrado César:
+El Cifrado César desplaza cada letra del alfabeto por un número fijo de posiciones hacia adelante. La clave es ese número fijo y es
+el elemento crucial tanto para cifrar como para descifrar un mensaje. El código que analizamos se basa en este principio, donde cada
+letra del texto en claro es sustituida por otra utilizando la clave como desplazamiento.
+
+2. Preprocesamiento del Texto:
+Uno de los primeros pasos es preparar el texto para el cifrado. En el código se elimina cualquier signo de puntuación, tildes, y se
+convierte a mayúsculas. Esto es fundamental para que el cifrado opere de manera uniforme sobre un alfabeto simple de 26 caracteres
+(de A a Z), excluyendo la letra Ñ, la cual es sustituida por "NN". Esto asegura que no haya caracteres no reconocidos por el esquema
+del cifrado.
+
+3. Cifrado:
+La función cifrar toma el texto ya preprocesado y aplica un desplazamiento aleatorio entre 1 y 25 posiciones. Al igual que en el ejemplo
+con Julio César, si se llega al final del alfabeto, el cifrado continúa desde el principio, siguiendo una lógica de rueda. El texto
+cifrado se organiza en bloques de 5 caracteres para aumentar la confusión, una práctica utilizada también para disfrazar la longitud y
+la estructura del mensaje original.
+
+4. Descifrado:
+En el caso del descifrado, la función descifra invierte el proceso de cifrado aplicando el desplazamiento hacia atrás según la clave
+utilizada. Aquí, el objetivo es recuperar el texto en claro siempre y cuando la clave sea conocida. Si la clave no es conocida, se
+implementan métodos de fuerza bruta.
+
+5. Fuerza Bruta:
+
+El código incluye dos funciones de descifrado por fuerza bruta:
+
+    descifrar_fuerza_bruta: Prueba todas las posibles claves (de 1 a 25) y genera los textos correspondientes. Esto sigue la misma
+    lógica que en el ejemplo del Bucle de Crackeo presentado en el texto.
+    descifrar_fuerza_bruta_dic: Aumenta la eficacia al verificar coincidencias de palabras en un diccionario predefinido. Esta función
+    no solo busca la coincidencia exacta en palabras comunes, sino que también tiene parámetros ajustables, como la longitud de las
+    palabras a considerar y el porcentaje de coincidencias necesarias para aceptar una clave como válida.
+
+6. Optimización del Descifrado:
+El texto menciona varias técnicas que ayudan a hacer más efectivo el descifrado. Una de ellas es eliminar del diccionario las palabras
+cortas (1 a 3 caracteres), ya que podrían generar "falsos positivos". En el código proporcionado, esta idea se refleja en las opciones
+avanzadas de la función descifrar_fuerza_bruta_dic, que permite ajustar el tamaño mínimo y máximo de las palabras que se comparan.
+
+7. Tratamiento Especial de la Ñ y el Espaciado:
+Debido a las limitaciones del código ASCII, la letra Ñ se convierte en "NN", lo que permite seguir utilizando un alfabeto estándar.
+Además, el código incluye la organización del texto cifrado en bloques de cinco caracteres, lo que dificulta aún más el análisis visual
+del mensaje.
+
+8. Manejo de Ficheros y Resultados:
+El programa está diseñado para gestionar tanto la entrada como la salida de datos a través de ficheros, lo que permite probar múltiples
+claves y almacenar los resultados. Los ficheros generados para cada clave permiten comparar los diferentes resultados del descifrado de
+manera sencilla.
